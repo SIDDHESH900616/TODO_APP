@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskSync Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>̥
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>TaskSync Pro</h1>
+            <nav>
+                <button class="tooltip" data-tooltip="Display all tasks" onclick="listTasks()">List Tasks</button>
+                <button class="tooltip" data-tooltip="Clear all tasks" onclick="clearAllTasks()">Clear All</button>
+                <button class="tooltip" data-tooltip="Export tasks as JSON" onclick="exportTasks()">Export</button>
+                <input type="file" id="importTasks" style="display: none;" accept=".json" onchange="importTasks(event)">
+                <button class="tooltip" data-tooltip="Import tasks from JSON" onclick="document.getElementById('importTasks').click()">Import</button>
+                <select class="theme-toggle" onchange="setTheme(this.value)">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                    <option value="high-contrast">High Contrast</option>
+                </select>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="content">
+            <!-- Add Task Section -->
+            <div class="section add-task-section">
+                <h2>Add Task</h2>
+                <div class="add-task">
+                    <input 
+                        id="taskText" 
+                        type="text" 
+                        placeholder="Enter task description"
+                        autofocus
+                    >
+                    <select id="taskCategory">
+                        <option value="Work">Work</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Urgent">Urgent</option>
+                    </select>
+                    <input 
+                        id="taskDueDate" 
+                        type="date"
+                        min="2025-05-14"
+                    >
+                    <select id="taskPriority">
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                    <button onclick="addTask()" class="tooltip" data-tooltip="Add task">Add Task</button>
+                </div>
+            </div>
+
+            <!-- Notification -->
+            <div id="notification" class="notification">
+                <span class="icon"></span>
+                <span id="notificationMessage"></span>
+            </div>
+
+            <!-- Task List Section -->
+            <div class="section">
+                <h2>Tasks</h2>
+                <ul id="taskList" class="task-list"></ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 TaskSync Pro. All rights reserved.</p>
+    </footer>
+
+</body>
+<script src="script.js"></script>
+</html>̥
